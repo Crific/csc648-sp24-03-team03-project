@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -7,16 +8,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/LoginSignup.css') }}">
 </head>
+
 <body>
     <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
     <h1 class="card-header">
         <a href="Index.html">
-            <img src="{{ url_for('static', filename='images/From Here to There logo.jpg') }}" class="logo"/>
+            <img src="{{ url_for('static', filename='images/From Here to There logo.jpg') }}" class="logo" />
         </a>
         <span class="title-text">From Here To There</span>
     </h1>
     <div class="nav-container" style="display: flex;">
-        <button class="btn btn-nav" type="button">About</button>
+        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            About
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+            <li><a class="dropdown-item" href="about/Douglas.html">Douglas</a></li>
+            <li><a class="dropdown-item" href="about/GioJung.html">Gio Jung</a></li>
+            <li><a class="dropdown-item" href="about/Gurpreet.html">Gurpreet</a></li>
+            <li><a class="dropdown-item" href="about/Gursimran.html">Gursimran</a></li>
+            <li><a class="dropdown-item" href="about/Justin.html">Justin</a></li>
+            <li><a class="dropdown-item" href="about/Omar.html">Omar</a></li>
+        </ul>
         <a href="{{ url_for('sell') }}" class="btn btn-nav" type="button">Sell/Rent</a>
         <a href="{{ url_for('dashboard_page') }}" class="btn btn-nav" type="button">Dashboard</a>
     </div>
@@ -43,8 +56,9 @@
                                 <div class="mb-3">
                                     {{ form.submit(class="btn btn-ordinary-primary d-block w-100") }}
                                 </div>
-                                <p class="text-muted">&nbsp;<a href="#">Forgot Password?</a></p>    
-                                <p class="text-muted">Need to make an account?&nbsp;<a href="{{ url_for('signup_page') }}">Signup</a></p>
+                                <p class="text-muted">&nbsp;<a href="#">Forgot Password?</a></p>
+                                <p class="text-muted">Need to make an account?&nbsp;<a
+                                        href="{{ url_for('signup_page') }}">Signup</a></p>
                             </form>
                         </div>
                     </div>
@@ -62,7 +76,8 @@
                     <ul class="list-inline my-2">
                         <li class="list-inline-item me-4">
                             <a href="{{ url_for('index') }}">
-                                <img src="{{ url_for('static', filename='images/From Here to There logo.jpg') }}" class="logo"/>
+                                <img src="{{ url_for('static', filename='images/From Here to There logo.jpg') }}"
+                                    class="logo" />
                             </a>
                         </li>
                     </ul>
@@ -78,4 +93,5 @@
     </footer>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </body>
+
 </html>

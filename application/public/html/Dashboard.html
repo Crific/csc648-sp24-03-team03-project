@@ -12,77 +12,88 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../public/js/Dashboard.js"></script>
     <script>
-    $(document).ready(function() {
-        function fetchMessages() {
-            $.ajax({
-                url: '/fetch_messages',
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                    console.log(data); // Log the data to check its structure
-                    var messageTable = '';
-                    if (data.length > 0) {
-                        $.each(data, function(key, message) {
-                            messageTable += '<tr>' +
-                                            '<td>' + message[3] + '</td>' + // UserName
-                                            '<td>' + message[0] + '</td>' + // MessageTitle
-                                            '<td>' + message[1] + '</td>' + // MessageText
-                                            '<td>' + new Date(message[2]).toLocaleString() + '</td>' + // MessageDateTime
-                                            '<td><button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button></td>' +
-                                            '</tr>';
-                        });
-                        $('#messagesContent tbody').html(messageTable);
-                        $('#messageCount').text(data.length).show();
-                    } else {
-                        messageTable = '<tr><td colspan="5" class="text-center">No messages</td></tr>';
-                        $('#messagesContent tbody').html(messageTable);
-                        $('#messageCount').hide();
+        $(document).ready(function () {
+            function fetchMessages() {
+                $.ajax({
+                    url: '/fetch_messages',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data); // Log the data to check its structure
+                        var messageTable = '';
+                        if (data.length > 0) {
+                            $.each(data, function (key, message) {
+                                messageTable += '<tr>' +
+                                    '<td>' + message[3] + '</td>' + // UserName
+                                    '<td>' + message[0] + '</td>' + // MessageTitle
+                                    '<td>' + message[1] + '</td>' + // MessageText
+                                    '<td>' + new Date(message[2]).toLocaleString() + '</td>' + // MessageDateTime
+                                    '<td><button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button></td>' +
+                                    '</tr>';
+                            });
+                            $('#messagesContent tbody').html(messageTable);
+                            $('#messageCount').text(data.length).show();
+                        } else {
+                            messageTable = '<tr><td colspan="5" class="text-center">No messages</td></tr>';
+                            $('#messagesContent tbody').html(messageTable);
+                            $('#messageCount').hide();
+                        }
+                        $('#messagesContent').show();
+                        $('#listingsContent').hide();
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error: " + error);
+                        alert('Error retrieving messages.');
                     }
-                    $('#messagesContent').show();
-                    $('#listingsContent').hide();
-                },
-                error: function(xhr, status, error) {
-                    console.log("Error: " + error);
-                    alert('Error retrieving messages.');
-                }
-            });
-        }
+                });
+            }
 
-        // Trigger fetchMessages on page load
-        fetchMessages();
+            // Trigger fetchMessages on page load
+            fetchMessages();
 
-        // Also trigger fetchMessages when the Messages button is clicked
-        $('#toMessages').click(fetchMessages);
-    });
+            // Also trigger fetchMessages when the Messages button is clicked
+            $('#toMessages').click(fetchMessages);
+        });
     </script>
 </head>
 
 <body>
     <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
     <div class="card-header">
-        <a href="Index.html"> 
-            <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
+        <a href="Index.html">
+            <img src="../../public/images/From Here to There logo.jpg" class="logo" />
         </a>
         <span class="title-text">From Here To There</span>
     </div>
     <div class="nav-container" style="display: flex;">
-        <button class="btn btn-nav" type="button">About</button>
+        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            About
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+            <li><a class="dropdown-item" href="about/Douglas.html">Douglas</a></li>
+            <li><a class="dropdown-item" href="about/GioJung.html">Gio Jung</a></li>
+            <li><a class="dropdown-item" href="about/Gurpreet.html">Gurpreet</a></li>
+            <li><a class="dropdown-item" href="about/Gursimran.html">Gursimran</a></li>
+            <li><a class="dropdown-item" href="about/Justin.html">Justin</a></li>
+            <li><a class="dropdown-item" href="about/Omar.html">Omar</a></li>
+        </ul>
         <a href="Sell.html" class="btn btn-nav" type="button">Sell/Rent</a>
         <a href="Dashboard.html#messages" class="btn btn-nav" type="button">Dashboard</a>
         <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
-    </div>     
+    </div>
     <div class="main-content">
         <div class="user-greeting">
             Welcome back, <strong>{{ current_user.UserName }}</strong>!
         </div>
         <h1 class="head-title">Dashboard</h1>
         <button id="toMessages" class="btn btn-outline-primary">
-            Messages <span id="messageCount" class="badge" style="display: none;">0</span> 
+            Messages <span id="messageCount" class="badge" style="display: none;">0</span>
         </button>
         <button id="toListings" class="btn btn-outline-secondary">Listings</button>
         <a href="Compose.html" class="btn btn-outline-secondary btn-compose" style="display: none;">Compose</a>
     </div>
-    
+
     <div id="messagesContent" style="display:none;">
         <div class="col-md-12 search-table-col">
             <div class="table-responsive table table-hover table-bordered results">
@@ -103,11 +114,12 @@
             </div>
         </div>
     </div>
-    
+
     <div id="listingsContent" style="display:none;">
         <div id="userlistings-container">
             <!-- Listings will be dynamically inserted here -->
         </div>
     </div>
 </body>
+
 </html>

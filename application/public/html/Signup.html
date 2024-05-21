@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -7,16 +8,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/LoginSignup.css') }}">
 </head>
+
 <body>
     <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
     <h1 class="card-header">
         <a href="{{ url_for('index') }}">
-            <img src="{{ url_for('static', filename='images/From Here to There logo.jpg') }}" class="logo"/>
+            <img src="{{ url_for('static', filename='images/From Here to There logo.jpg') }}" class="logo" />
         </a>
         <span class="title-text">From Here To There</span>
     </h1>
     <div class="nav-container" style="display: flex;">
-        <button class="btn btn-nav" type="button">About</button>
+        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            About
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+            <li><a class="dropdown-item" href="about/Douglas.html">Douglas</a></li>
+            <li><a class="dropdown-item" href="about/GioJung.html">Gio Jung</a></li>
+            <li><a class="dropdown-item" href="about/Gurpreet.html">Gurpreet</a></li>
+            <li><a class="dropdown-item" href="about/Gursimran.html">Gursimran</a></li>
+            <li><a class="dropdown-item" href="about/Justin.html">Justin</a></li>
+            <li><a class="dropdown-item" href="about/Omar.html">Omar</a></li>
+        </ul>
         <a href="{{ url_for('sell') }}" class="btn btn-nav" type="button">Sell/Rent</a>
         <a href="{{ url_for('dashboard_page') }}" class="btn btn-nav" type="button">Dashboard</a>
     </div>
@@ -34,28 +47,33 @@
                         <div class="card-body d-flex flex-column align-items-center">
                             <!-- Display flash messages -->
                             {% with messages = get_flashed_messages(with_categories=true) %}
-                                {% if messages %}
-                                    {% for category, message in messages %}
-                                        <div class="alert alert-{{ category }}" role="alert">
-                                            {{ message }}
-                                        </div>
-                                    {% endfor %}
-                                {% endif %}
+                            {% if messages %}
+                            {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}" role="alert">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
                             {% endwith %}
                             <form class="text-center" method="post" action="{{ url_for('signup_page') }}">
                                 {{ form.hidden_tag() }}
                                 <p class="text-muted">ALL Fields Are Required</p>
-                                <div class="mb-3">{{ form.username(class="form-control", placeholder="Enter a Username") }}</div>
-                                <div class="mb-3">{{ form.email(class="form-control", placeholder="Enter an Email") }}</div>
+                                <div class="mb-3">{{ form.username(class="form-control", placeholder="Enter a Username")
+                                    }}</div>
+                                <div class="mb-3">{{ form.email(class="form-control", placeholder="Enter an Email") }}
+                                </div>
                                 <div class="mb-3">
                                     {{ form.password(class="form-control", placeholder="Enter a Password") }}
                                     {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
                                 </div>
                                 <div class="form-check">{{ form.agree_tos(class="form-check-input") }}
-                                    <label class="form-check-label" for="formCheck-2">I agree to the&nbsp;<a href="#">Terms of Service</a></label>
+                                    <label class="form-check-label" for="formCheck-2">I agree to the&nbsp;<a
+                                            href="#">Terms of Service</a></label>
                                 </div>
-                                <div class="mb-3"><button class="btn btn-ordinary-primary d-block w-100" type="submit">Signup</button></div>
-                                <p class="text-muted">Already have an account?&nbsp;<a href="{{ url_for('login') }}">Login</a></p>
+                                <div class="mb-3"><button class="btn btn-ordinary-primary d-block w-100"
+                                        type="submit">Signup</button></div>
+                                <p class="text-muted">Already have an account?&nbsp;<a
+                                        href="{{ url_for('login') }}">Login</a></p>
                             </form>
                         </div>
                     </div>
@@ -72,7 +90,8 @@
                         <ul class="list-inline my-2">
                             <li class="list-inline-item me-4">
                                 <a href="{{ url_for('index') }}">
-                                    <img src="{{ url_for('static', filename='images/From Here to There logo.jpg') }}" class="logo"/>
+                                    <img src="{{ url_for('static', filename='images/From Here to There logo.jpg') }}"
+                                        class="logo" />
                                 </a>
                             </li>
                         </ul>
@@ -89,4 +108,5 @@
     </section>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </body>
+
 </html>
