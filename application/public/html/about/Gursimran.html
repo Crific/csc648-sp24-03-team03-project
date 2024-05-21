@@ -1,61 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="light" lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Me</title>
-  <link rel="stylesheet" href="../../public/css/About.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>About Me</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/About.css">
+    <link rel="icon" type="image" href="../../images/From Here To There logo.jpg">
 </head>
 
 <body>
-  <div class="demo-notice">
-    SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only
-  </div>
-  <div class="header">
-    <a href="../index.html">
-      <img src="../../public/images/From Here to There logo.jpg" alt="Logo" href="../index.html" id="logo">
-    </a>
-    <h1 id="AboutUs"> About US!</h1>
-  </div>
-
-  <div class="navbar">
-    <ul id="navblock">
-      <li><a href="../index.html">Home</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropbtn">About</a>
-        <div class="dropdown-content">
-          <a href="Omar.html">Omar Dajani</a>
-          <a href="GioJung.html">Gio Jung</a>
-          <a href="Justin.html">Justin Isidro</a>
-          <a href="Douglas.html">Douglas Cheung</a>
-          <a href="Gurpreet.html">Gurpreet Natt</a>
-          <a href="Gursimran.html">Gursimran Singh</a>
+    <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
+    <h1 class="card-header">
+        <a href="../Index.html">
+            <img src="../../public/images/From Here to There logo.jpg" class="logo" />
+        </a>
+        <span class="title-text">From Here To There</span>
+    </h1>
+    <div class="nav-container" style="display: flex;">
+        <button class="btn btn-nav dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown"
+            type="button">About</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="Gurpreet.html">Gurpreet Natt</a>
+            <a class="dropdown-item" href="Douglas.html">Douglas Cheung</a>
+            <a class="dropdown-item" href="Gursimran.html">Gursimran Singh</a>
+            <a class="dropdown-item" href="Omar.html">Omar Dajani</a>
+            <a class="dropdown-item" href="Justin.html">Justin Isidro</a>
+            <a class="dropdown-item" href="GioJung.html">Gio Jung</a>
         </div>
-      </li>
-      <li><a href="../pages/Search.html">Go To Search</a></li>
-    </ul>
-    <div id="loginButton">
-      <a href="login.html">Login</a>
+        <a href="../Sell.html" class="btn btn-nav" type="button">
+            Sell/Rent </a>
+        <a href="../Dashboard.html" class="btn btn-nav" type="button">
+            Dashboard </a>
+
+        <!-- Check if the user is logged in and display the appropriate link -->
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
+        {% else %}
+        <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
+        {% endif %}
     </div>
-  </div>
-  <div class="main-content">
-    <h2>Gursimran Singh</h2>
-    <div class="image-container">
-      <img src="{{ url_for('static',filename='images/placeholder.png')}}" alt="Logo" class="image">
+    <div class="main-content">
+        <h1 class="head-title">About Us!</h1>
     </div>
-    <h4>
-      I am a 4th year Computer Science major. In my free time I enjoy going
-      out, trying new foods, and playing basketball. I am looking forward to
-      working on projects with my team in this class.
-    </h4>
-  </div>
-  <div class="main-content">
-    <h2>Contact</h2>
-    <ul>
-      <p>gsingh8@sfsu.edu</p>
-    </ul>
-  </div>
+    <section class="position-relative py-4 py-xl-5">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div>
+                        <form class="p-3 p-xl-4 contact-form" method="post">
+                            <h1 class="name-header">Gursimran Singh</h1>
+                            <img src="../public/images/placeholder.png" class="logo-1" />
+
+                            <h2 class="description">
+                                I am a 4th year Computer Science major. In my free time I enjoy going
+                                out, trying new foods, and playing basketball. I am looking forward to
+                                working on projects with my team in this class.
+                            </h2>
+                            <h4 class="name-header">Contact</h4>
+                            <ul>
+                                <p class="contact-info"> gsingh8@sfsu.edu</p>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="text-center py-4">
+        <div class="container footer">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col-lg-4">
+                    <p class="text-muted my-2">Copyright&nbsp;© 2024 From Here To There</p>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item me-4">
+                            <a href="../Index.html">
+                                <img src="../../public/images/From Here to There logo.jpg" class="logo" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a class="link-secondary" href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a class="link-secondary" href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
