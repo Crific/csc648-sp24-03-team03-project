@@ -6,10 +6,10 @@ search_bp = Blueprint('search_bp', __name__, template_folder='./public/html')
 
 @search_bp.route('/searchingPost', methods=['GET'])
 def searching_post():
-    query = request.args.get('query', '')
-    category = request.args.get('category', '')
-    price_range = request.args.get('price_range', 'None')
-    rental_price_range = request.args.get('rental_price_range', 'None')
+    query = request.args.get('query', '').strip()
+    category = request.args.get('category', '').strip()
+    price_range = request.args.get('price_range', 'None').strip()
+    rental_price_range = request.args.get('rental_price_range', 'None').strip()
     
     # Connect to the database
     mydb = get_db_connection()
@@ -31,9 +31,10 @@ def searching_post():
 
     cur.execute(sql_query, values)
     results = cur.fetchall()
+    numrows = len(results)
     cur.close()
     mydb.close()
     
     # Render the results into HTML
-    htmlresponse = render_template('response.html', items=results)
+    htmlresponse = render_template('response.html', items=results, numrows=numrows)
     return jsonify({'htmlresponse': htmlresponse})
