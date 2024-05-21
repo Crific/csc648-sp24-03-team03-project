@@ -294,7 +294,33 @@ def send_message():
 
 @app.route('/ItemPage.html')
 def itemdetail_page():
-    return render_template('ItemPage.html')
+    listing_id = request.args.get('listing_id')
+
+    if not listing_id:
+        flash('Listing ID is missing.', 'danger')
+        return redirect(url_for('index'))
+
+    try:
+        conn = get_db_connection()
+        if conn:
+            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor.execute("SELECT * FROM Listing WHERE ListingID = %s", (listing_id,))
+            item = cursor.fetchone()
+            cursor.close()
+            conn.close()
+
+            if not item:
+                flash('Item not found.', 'danger')
+                return redirect(url_for('index'))
+
+            return render_template('ItemPage.html', item=item)
+        else:
+            flash('Database connection failed.', 'danger')
+            return redirect(url_for('index'))
+    except Exception as e:
+        logging.error(f"Error fetching item details: {e}")
+        flash(f"Error fetching item details: {e}", 'danger')
+        return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

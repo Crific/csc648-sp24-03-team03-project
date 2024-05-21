@@ -3,9 +3,11 @@
 {% for item in items %}
 <div class="recent-area2">
     <p>{{ item.ItemName }}</p>
+    <div class="item" onclick="window.location.href='{{ url_for('itemdetail_page', listing_id=item.ListingID) }}'">
     <img src="{{ url_for('static', filename='Product_Images/Thumbnails/' ~ item.file_name) }}" class="recents" alt="{{ item.ItemName }}"/>
     <p class="description">{{ item.PostDate }}</p>
     <p class="description">{{ item.CategoryName }}</p>
+    </div>
     <a href="{{ url_for('compose.compose_page', receiver_id=item.UserID, listing_id=item.ListingID) }}" class="btn btn-nav btn-display" type="button">
         Message Seller
     </a>
