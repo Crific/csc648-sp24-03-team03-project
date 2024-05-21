@@ -292,5 +292,9 @@ def send_message():
 
     return redirect(url_for('compose.compose_page'))
 
+@app.route('/ItemPage.html')
+def itemdetail_page():
+    return render_template('ItemPage.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
