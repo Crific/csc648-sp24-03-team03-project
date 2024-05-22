@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     // Function to handle search form submissions
     function performSearch() {
         var query = $('#searchText').val();

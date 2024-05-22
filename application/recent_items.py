@@ -18,6 +18,8 @@ def recent_items_post():
                 Category 
             ON 
                 Listing.CategoryID = Category.CategoryID 
+            WHERE
+                Listing.Verified IS NOT NULL
             ORDER BY 
                 ListingID DESC 
             LIMIT 4

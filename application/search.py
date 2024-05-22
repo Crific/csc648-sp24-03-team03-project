@@ -20,7 +20,7 @@ def searching_post():
         SELECT Listing.*, Category.CategoryName 
         FROM Listing 
         JOIN Category ON Listing.CategoryID = Category.CategoryID 
-        WHERE ItemName LIKE %s
+        WHERE ItemName LIKE %s AND Listing.Verified IS NOT NULL
     """
     values = [f'%{query}%']
     
