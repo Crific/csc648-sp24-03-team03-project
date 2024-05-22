@@ -2,13 +2,13 @@ $(document).ready(function() {
     function toggleMessages() {
         var messages = document.getElementById("messagesContent");
         var listings = document.getElementById("listingsContent");
-        var composeBtn = document.querySelector('.btn-compose');
+       // var composeBtn = document.querySelector('.btn-compose');
         var btnMessages = document.querySelector('.btn-outline-primary');
         var btnListings = document.querySelector('.btn-outline-secondary');
 
         messages.style.display = "block";
         listings.style.display = "none";
-        composeBtn.style.display = "block";
+        //composeBtn.style.display = "block";
         btnMessages.classList.add('btn-active');
         btnListings.classList.remove('btn-active');
     }
@@ -16,13 +16,13 @@ $(document).ready(function() {
     function toggleListings() {
         var messages = document.getElementById("messagesContent");
         var listings = document.getElementById("listingsContent");
-        var composeBtn = document.querySelector('.btn-compose');
+        //var composeBtn = document.querySelector('.btn-compose');
         var btnMessages = document.querySelector('.btn-outline-primary');
         var btnListings = document.querySelector('.btn-outline-secondary');
 
         listings.style.display = "block";
         messages.style.display = "none";
-        composeBtn.style.display = "none";
+        //composeBtn.style.display = "none";
         btnListings.classList.add('btn-active');
         btnMessages.classList.remove('btn-active');
 
