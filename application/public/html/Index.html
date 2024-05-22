@@ -43,7 +43,7 @@
             <li><a class="dropdown-item" href="about/Justin.html">Justin</a></li>
             <li><a class="dropdown-item" href="about/Omar.html">Omar</a></li>
         </ul>
-        <a href="Sell.html" class="btn btn-nav" type="button">Sell/Rent</a>
+        <a href="SellRent.html" class="btn btn-nav" type="button">Sell/Rent</a>
         <a href="Dashboard.html" class="btn btn-nav" type="button">Dashboard</a>
 
         <!-- Check if the user is logged in and display the appropriate link -->
@@ -82,7 +82,7 @@
                         <a href="about/Gursimran.html">Gursimran Singh</a>
                     </div>
                 </li>
-	        <li><a href="Sell.html">Sell/Rent</a></li>
+	        <li><a href="SellRent.html">Sell/Rent</a></li>
 		<li><a href="Dashboard.html">Dashboard</a></li>
 		{% if current_user.is_authenticated %}
 		    <li><a href="{{ url_for('logout') }}">Logout</a></li>
