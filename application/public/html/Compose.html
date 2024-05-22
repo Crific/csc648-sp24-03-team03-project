@@ -14,7 +14,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-23LPJ8E0MB');
     </script>
 </head>
@@ -46,6 +45,19 @@
     </div>
     <div class="main-content">
         <h1 class="head-title">Compose</h1>
+        {% if item_details %}
+        <div class="item-details">
+            <h2>Item Details</h2>
+            <img src="{{ url_for('static', filename='Product_Images/Thumbnails/' + item_details[7]) }}" alt="{{ item_details[2] }}" style="width: 400px; height: auto;">
+            <h2>{{ item_details[2] }}</h2>
+            <p>{{ item_details[3] }}</p>
+            <h5>Category: {{ item_details[-2] }}</h5>
+            <h5>Price: ${{ item_details[5] }}</h5>
+            <h5>Rental Price: {{ item_details[6] if item_details[6] else 'N/A' }}</h5>
+            <h5>Posted by: {{ item_details[-1] }}</h5>
+            <h5>Posted Date : {{ item_details[10] }}</h5>
+        </div>
+        {% endif %}
     </div>
     <section class="position-relative py-4 py-xl-5">
         <div class="container position-relative">
@@ -67,8 +79,7 @@
                                 {{ form.subject(class="form-control", id="subject-1", placeholder="Subject") }}
                             </div>
                             <div class="mb-3">
-                                {{ form.message(class="form-control", id="message-1", rows="6", placeholder="Message")
-                                }}
+                                {{ form.message(class="form-control", id="message-1", rows="6", placeholder="Message") }}
                             </div>
                             <div>
                                 <button class="btn btn-form d-block w-100" type="submit">Send</button>
