@@ -191,3 +191,10 @@ border-color: #6a5acd;
 border-color: #6a5acd;
 }
 
+.head-title {
+  font-weight: semi-bold;
+  text-align: center;
+  font-size:40px; /* Fixed font size for consistency */
+  color: var(--bs-emphasis-color);
+  margin-top: -40px;
+}

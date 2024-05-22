@@ -609,3 +609,10 @@ footer.text-center.py-4 {
         width: 100%;
     }
 }
+
+.head-title {
+  font-weight: semi-bold;
+  text-align: center;
+  font-size:40px; /* Fixed font size for consistency */
+  color: var(--bs-emphasis-color);
+}

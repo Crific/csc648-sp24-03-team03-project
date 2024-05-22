@@ -246,12 +246,16 @@ def fetch_messages():
         cursor.close()
         conn.close()
 
+@app.route('/Logout.html')
+def logout_page():
+    return render_template('Logout.html')
+
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     flash('You have been logged out.', 'success')
-    return redirect(url_for('login'))
+    return redirect(url_for('logout_page'))
 
 @app.route('/send_message', methods=['POST'])
 @login_required
