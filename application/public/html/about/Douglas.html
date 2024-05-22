@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -7,38 +8,50 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/About.css">
     <link rel="icon" type="image" href="../../images/From Here To There logo.jpg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-23LPJ8E0MB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-23LPJ8E0MB');
+    </script>
 </head>
+
 <body>
     <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
     <h1 class="card-header">
-        <a href="../Index.html"> 
-                <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
+        <a href="../Index.html">
+            <img src="../../public/images/From Here to There logo.jpg" class="logo" />
         </a>
         <span class="title-text">From Here To There</span>
     </h1>
     <div class="nav-container" style="display: flex;">
-        <button class="btn btn-nav dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">About</button>
-				<div class="dropdown-menu">
-				<a class="dropdown-item" href="Gurpreet.html">Gurpreet Natt</a>
-				<a class="dropdown-item" href="Douglas.html">Douglas Cheung</a>
-				<a class="dropdown-item" href="Gursimran.html">Gursimran Singh</a>
-				<a class="dropdown-item" href="Omar.html">Omar Dajani</a>
-				<a class="dropdown-item" href="Justin.html">Justin Isidro</a>
-				<a class="dropdown-item" href="GioJung.html">Gio Jung</a>
-			</div>
+        <button class="btn btn-nav dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown"
+            type="button">About</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="Gurpreet.html">Gurpreet Natt</a>
+            <a class="dropdown-item" href="Douglas.html">Douglas Cheung</a>
+            <a class="dropdown-item" href="Gursimran.html">Gursimran Singh</a>
+            <a class="dropdown-item" href="Omar.html">Omar Dajani</a>
+            <a class="dropdown-item" href="Justin.html">Justin Isidro</a>
+            <a class="dropdown-item" href="GioJung.html">Gio Jung</a>
+        </div>
         <a href="../SellRent.html" class="btn btn-nav" type="button">
-			Sell/Rent </a>
+            Sell/Rent </a>
         <a href="../Dashboard.html" class="btn btn-nav" type="button">
             Dashboard </a>
         <!-- Check if the user is logged in and display the appropriate link -->
         {% if current_user.is_authenticated %}
-            <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
         {% else %}
-            <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
+        <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
         {% endif %}
-    </div>  
-<div class="main-content">
-    <h1 class="head-title">About Us!</h1>
+    </div>
+    <div class="main-content">
+        <h1 class="head-title">About Us!</h1>
     </div>
     <section class="position-relative py-4 py-xl-5">
         <div class="container position-relative">
@@ -47,23 +60,23 @@
                     <div>
                         <form class="p-3 p-xl-4 contact-form" method="post">
                             <h1 class="name-header">Douglas Cheung</h1>
-                            <img src="../public/images/Douglas.png" class="logo-1"/>
-                            
-                            <h2  class="description"> 
-                              I identify as an avid reader, gamer, and programmer-in-progress. If
-                              there was one thing I'd add, is that I like to write fiction. Ask me for
-                              context if interested.
+                            <img src="../public/images/Douglas.png" class="logo-1" />
+
+                            <h2 class="description">
+                                I identify as an avid reader, gamer, and programmer-in-progress. If
+                                there was one thing I'd add, is that I like to write fiction. Ask me for
+                                context if interested.
                             </h2>
-                            <h3 class = "description-2">
-                              Preemptive apologies for any sort of belayed responses from my person,
-                              but I find it hard to concentrate on things beyond my immediate
-                              interest. Fortunately, this class has my interest, so I should be
-                              available for most of its duration.
+                            <h3 class="description-2">
+                                Preemptive apologies for any sort of belayed responses from my person,
+                                but I find it hard to concentrate on things beyond my immediate
+                                interest. Fortunately, this class has my interest, so I should be
+                                available for most of its duration.
                             </h3>
                             <h4 class="name-header">Contact</h4>
-                               <ul>
-                                 <p class="contact-info"> dcheung5@sfsu.edu</p>
-                                </ul>
+                            <ul>
+                                <p class="contact-info"> dcheung5@sfsu.edu</p>
+                            </ul>
                         </form>
                     </div>
                 </div>
@@ -79,9 +92,9 @@
                 <div class="col">
                     <ul class="list-inline my-2">
                         <li class="list-inline-item me-4">
-                            <a href="../Index.html"> 
-                            <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
-                        </a>
+                            <a href="../Index.html">
+                                <img src="../../public/images/From Here to There logo.jpg" class="logo" />
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -96,4 +109,5 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

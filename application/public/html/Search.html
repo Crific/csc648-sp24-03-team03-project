@@ -10,13 +10,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../public/js/script.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-23LPJ8E0MB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-23LPJ8E0MB');
+    </script>
 </head>
 
 <body>
     <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
     <header class="card-header">
         <a href="Index.html">
-            <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
+            <img src="../../public/images/From Here to There logo.jpg" class="logo" />
         </a>
         <p id="welcome">Welcome SFSU students, faculty, and staff to</p>
         <h1 class="title-text">From Here To There</h1>
@@ -34,7 +44,8 @@
         </form>
     </header>
     <div class="nav-container">
-        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
             About
         </button>
         <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
@@ -50,18 +61,18 @@
         <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
 
     </div>
-    
+
     <div class="mobile">
         <form id="searchForm2">
             <div id="txt-container2">
-            <select id="category">
-                <option value="default">Select Category</option>
+                <select id="category">
+                    <option value="default">Select Category</option>
                     <option value="electronics">Electronics</option>
                     <option value="books">Books</option>
                     <option value="furniture">Furniture</option>
                 </select>
-            <input type="text" id="searchText" name="searchText">
-            <input type="submit" class="searchButton" value="Search">
+                <input type="text" id="searchText" name="searchText">
+                <input type="submit" class="searchButton" value="Search">
             </div>
         </form>
         <button id="dropdownBtn" class="dropbtn">☰</button>
@@ -104,7 +115,7 @@
         </div>
 
         <div id="display-range">
-                <!-- This section will be populated by AJAX -->
+            <!-- This section will be populated by AJAX -->
         </div>
     </div>
 
@@ -117,9 +128,9 @@
                 <div class="col">
                     <ul class="list-inline my-2">
                         <li class="list-inline-item me-4">
-                            <a href="Index.html"> 
-                            <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
-                        </a>
+                            <a href="Index.html">
+                                <img src="../../public/images/From Here to There logo.jpg" class="logo" />
+                            </a>
                         </li>
                     </ul>
                 </div>

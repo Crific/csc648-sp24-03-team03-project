@@ -11,6 +11,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../public/js/Dashboard.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-23LPJ8E0MB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-23LPJ8E0MB');
+    </script>
+
     <script>
         $(document).ready(function () {
             var csrfToken = $('#csrf_token').val();
@@ -44,7 +55,7 @@
                         $('#listingsContent').hide();
 
                         // Attach click event to delete buttons
-                        $('.btn-delete').click(function() {
+                        $('.btn-delete').click(function () {
                             var messageId = $(this).data('id');
                             deleteMessage(messageId);
                         });
@@ -60,7 +71,7 @@
                 $.ajax({
                     url: '/delete_message',
                     type: 'POST',
-                    data: { 
+                    data: {
                         id: messageId,
                         csrf_token: csrfToken
                     },
@@ -85,27 +96,27 @@
 
 <body>
     <input type="hidden" id="csrf_token" value="{{ csrf_token() }}">
-<div class="header-container">
+    <div class="header-container">
         <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
         <div class="card-header">
             <a href="Index.html">
-                <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
+                <img src="../../public/images/From Here to There logo.jpg" class="logo" />
             </a>
             <h1 class="title-text">From Here To There</h1>
         </div>
         <form id="searchForm" style="text-align: center;">
             <div id="txt-container">
-            <select id="category">
-                <option value="default">Select Category</option>
-                <option value="electronics">Electronics</option>
-                <option value="books">Books</option>
-                <option value="furniture">Furniture</option>
-            </select>
-            <input type="text" id="searchText" name="searchText">
-            <input type="submit" class="searchButton" value="Search">
+                <select id="category">
+                    <option value="default">Select Category</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="books">Books</option>
+                    <option value="furniture">Furniture</option>
+                </select>
+                <input type="text" id="searchText" name="searchText">
+                <input type="submit" class="searchButton" value="Search">
         </form>
     </div>
-</div>
+    </div>
     <div class="nav-container" style="display: flex;">
         <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -161,4 +172,5 @@
         </div>
     </div>
 </body>
+
 </html>

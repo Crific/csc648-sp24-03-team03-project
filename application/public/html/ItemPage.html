@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en" data-bss-forced-theme="light">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -8,12 +9,23 @@
     <link rel="stylesheet" href="../public/css/Index.css">
     <link rel="icon" type="image/jpg" href="../images/From Here to There logo.jpg">
     <script src="../public/js/script.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-23LPJ8E0MB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-23LPJ8E0MB');
+    </script>
 </head>
+
 <body>
     <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
     <header class="card-header">
         <a href="Index.html">
-            <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
+            <img src="../../public/images/From Here to There logo.jpg" class="logo" />
         </a>
         <p id="welcome">Welcome SFSU students, faculty, and staff to</p>
         <h1 class="title-text">From Here To There</h1>
@@ -31,7 +43,8 @@
         </form>
     </header>
     <div class="nav-container">
-        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
             About
         </button>
         <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
@@ -46,14 +59,15 @@
         <a href="Dashboard.html" class="btn btn-nav" type="button">Dashboard</a>
 
         {% if current_user.is_authenticated %}
-            <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
         {% else %}
-            <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
+        <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
         {% endif %}
     </div>
 
     <div id="main-content" class="main-content text-center">
-        <img src="{{ url_for('static', filename='Product_Images/Thumbnails/' + item[7]) }}" alt="{{ item[2] }}" style="width: 400px; height: auto;">
+        <img src="{{ url_for('static', filename='Product_Images/Thumbnails/' + item[7]) }}" alt="{{ item[2] }}"
+            style="width: 400px; height: auto;">
         <h2>{{ item[2] }}</h2>
         <p>{{ item[3] }}</p>
         <h5>Category: {{ item[-2] }}</h5>
@@ -61,7 +75,8 @@
         <h5>Rental Price: {{ item[6] if item[6] else 'N/A' }}</h5>
         <h5>Posted by: {{ item[-1] }}</h5>
         <h5>Posted Date : {{ item[10] }}</h5>
-        <a href="{{ url_for('compose.compose_page', receiver_id=item[1], listing_id=item[0]) }}" class="btn btn-primary">Message Seller</a>
+        <a href="{{ url_for('compose.compose_page', receiver_id=item[1], listing_id=item[0]) }}"
+            class="btn btn-primary">Message Seller</a>
         <!-- Debugging output removed -->
         <!-- <pre>{{ item | tojson }}</pre>-->
     </div>
@@ -75,9 +90,9 @@
                 <div class="col">
                     <ul class="list-inline my-2">
                         <li class="list-inline-item me-4">
-                            <a href="Index.html"> 
-                            <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
-                        </a>
+                            <a href="Index.html">
+                                <img src="../../public/images/From Here to There logo.jpg" class="logo" />
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -91,4 +106,5 @@
         </div>
     </footer>
 </body>
+
 </html>

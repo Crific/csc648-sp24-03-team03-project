@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en" data-bss-forced-theme="light">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -9,12 +10,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../public/js/script.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-23LPJ8E0MB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-23LPJ8E0MB');
+    </script>
 </head>
+
 <body>
     <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
     <header class="card-header">
         <a href="Index.html">
-            <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
+            <img src="../../public/images/From Here to There logo.jpg" class="logo" />
         </a>
         <h1 class="title-text">From Here To There</h1>
         <form id="searchForm">
@@ -31,7 +43,8 @@
         </form>
     </header>
     <div class="nav-container">
-        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
             About
         </button>
         <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
@@ -47,23 +60,23 @@
 
         <!-- Check if the user is logged in and display the appropriate link -->
         {% if current_user.is_authenticated %}
-            <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
         {% else %}
-            <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
+        <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
         {% endif %}
     </div>
-    
+
     <div class="mobile">
         <form id="searchForm2">
             <div id="txt-container2">
-            <select id="category">
-                <option value="default">Select Category</option>
+                <select id="category">
+                    <option value="default">Select Category</option>
                     <option value="electronics">Electronics</option>
                     <option value="books">Books</option>
                     <option value="furniture">Furniture</option>
                 </select>
-            <input type="text" id="searchText" name="searchText">
-            <input type="submit" class="searchButton" value="Search">
+                <input type="text" id="searchText" name="searchText">
+                <input type="submit" class="searchButton" value="Search">
             </div>
         </form>
         <button id="dropdownBtn" class="dropbtn">☰</button>
@@ -81,13 +94,13 @@
                         <a href="about/Gursimran.html">Gursimran Singh</a>
                     </div>
                 </li>
-	        <li><a href="SellRent.html">Sell/Rent</a></li>
-		<li><a href="Dashboard.html">Dashboard</a></li>
-		{% if current_user.is_authenticated %}
-		    <li><a href="{{ url_for('logout') }}">Logout</a></li>
-		{% else %}
-		    <li><a href="Login.html">Login/ Registration</a></li>
-		{% endif %}
+                <li><a href="SellRent.html">Sell/Rent</a></li>
+                <li><a href="Dashboard.html">Dashboard</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                <li><a href="Login.html">Login/ Registration</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -96,29 +109,30 @@
         <h1 class="head-title">Successfully logged out.</h1>
     </div>
     <footer class="text-center py-4" id="footer">
-	<div class="container footer">
-	    <div class="row row-cols-1 row-cols-lg-3">
-		<div class="col-lg-4">
-		    <p class="text-muted my-2">Copyright&nbsp;© 2024 From Here to There</p>
-		</div>
-		<div class="col">
-		    <ul class="list-inline my-2">
-			<li class="list-inline-item me-4">
-			    <a href="Index.html"> 
-			    <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
-			</a>
-			</li>
-		    </ul>
-		</div>
-		<div class="col">
-		    <ul class="list-inline my-2">
-			<li class="list-inline-item"><a class="link-secondary" href="#">Privacy Policy</a></li>
-			<li class="list-inline-item"><a class="link-secondary" href="#">Terms of Service</a></li>
-		    </ul>
-		</div>
-	    </div>
-	</div>
+        <div class="container footer">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col-lg-4">
+                    <p class="text-muted my-2">Copyright&nbsp;© 2024 From Here to There</p>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item me-4">
+                            <a href="Index.html">
+                                <img src="../../public/images/From Here to There logo.jpg" class="logo" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a class="link-secondary" href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a class="link-secondary" href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
 
 </body>
+
 </html>
