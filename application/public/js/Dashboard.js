@@ -46,6 +46,7 @@ $(document).ready(function() {
                                     <p class="description">Price: ${listing.Price}</p>
                                     <p class="description">Rental Price: ${listing.RentalPrice}</p>
                                     <p class="description">Category: ${listing.CategoryName}</p>
+                                    <button class="trash-button"><i class="fa fa-trash"></i></button>
                                 </div>
                             `;
                             listingsContent.append(listingHtml);
