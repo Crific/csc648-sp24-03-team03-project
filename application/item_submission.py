@@ -27,6 +27,7 @@ def submit_item():
 
     item_name = request.form['itemName']
     item_price = request.form['itemPrice']
+    item_rental_price = request.form['rentalPrice']
     category_id = request.form['categoryID']
     item_desc = request.form.get('itemDesc', '')
     item_pic = request.files['itemPic']
@@ -55,8 +56,8 @@ def submit_item():
 
         cursor = conn.cursor()
         sql = """
-        INSERT INTO Listing (UserID, ItemName, ItemDescription, CategoryID, Price, PhotoName, PhotoPath, ThumbnailPhotoPath, PostDate)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, CURDATE())
+        INSERT INTO Listing (UserID, ItemName, ItemDescription, CategoryID, Price, RentalPrice, PhotoName, PhotoPath, ThumbnailPhotoPath, PostDate)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, CURDATE())
         """
         cursor.execute(sql, (
             user_id,  # Use actual user ID from current_user
@@ -64,6 +65,7 @@ def submit_item():
             item_desc, 
             category_id, 
             item_price, 
+            item_rental_price,
             filename, 
             file_path,
             thumbnail_file_path
