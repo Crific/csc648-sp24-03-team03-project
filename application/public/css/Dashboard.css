@@ -278,7 +278,8 @@ background-color: #6a5acd;
   padding: 5px;
     float: left;
     max-height: none;
-    padding-bottom: 16%;
+    padding-bottom: 50px;
+    height: 180px; //Here
 }
 
 .recent-area p.description {
