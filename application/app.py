@@ -101,10 +101,10 @@ def gursimran():
 def omar():
     return render_template('about/Omar.html')
 
-@app.route('/Sell.html')
+@app.route('/SellRent.html')
 @login_required
 def sell():
-    return render_template('Sell.html')
+    return render_template('SellRent.html')
 
 @app.route('/Search.html')
 def search_page():
@@ -292,8 +292,8 @@ def send_message():
 
     return redirect(url_for('compose.compose_page'))
 
-@app.route('/ItemPage.html')
-def itemdetail_page():
+@app.route('/item_details')
+def item_details():
     listing_id = request.args.get('listing_id')
 
     if not listing_id:
@@ -303,8 +303,14 @@ def itemdetail_page():
     try:
         conn = get_db_connection()
         if conn:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
-            cursor.execute("SELECT * FROM Listing WHERE ListingID = %s", (listing_id,))
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT Listing.*, Category.CategoryName, User.UserName 
+                FROM Listing 
+                JOIN Category ON Listing.CategoryID = Category.CategoryID 
+                JOIN User ON Listing.UserID = User.UserID 
+                WHERE ListingID = %s
+            """, (listing_id,))
             item = cursor.fetchone()
             cursor.close()
             conn.close()
@@ -312,6 +318,8 @@ def itemdetail_page():
             if not item:
                 flash('Item not found.', 'danger')
                 return redirect(url_for('index'))
+
+            logging.info(f"Item fetched: {item}")
 
             return render_template('ItemPage.html', item=item)
         else:

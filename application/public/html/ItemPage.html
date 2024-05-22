@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en" data-bss-forced-theme="light">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="../public/css/Index.css">
     <link rel="icon" type="image/jpg" href="../images/From Here to There logo.jpg">
 </head>
-
 <body>
     <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
     <header class="card-header">
@@ -46,7 +44,6 @@
         <a href="SellRent.html" class="btn btn-nav" type="button">Sell/Rent</a>
         <a href="Dashboard.html" class="btn btn-nav" type="button">Dashboard</a>
 
-        <!-- Check if the user is logged in and display the appropriate link -->
         {% if current_user.is_authenticated %}
             <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
         {% else %}
@@ -54,38 +51,43 @@
         {% endif %}
     </div>
 
-    <div id="main-content" class="main-content">
-        <h2>{{ item.ItemName }}</h2>
-        <p>{{ item.ItemDescription }}</p>
-        <p>Price: {{ item.Price }}</p>
-        <p>Posted by: {{ item.owner }}</p> 
+    <div id="main-content" class="main-content text-center">
+        <img src="{{ url_for('static', filename='Product_Images/Thumbnails/' + item[7]) }}" alt="{{ item[2] }}" style="width: 200px; height: auto;">
+        <h2>{{ item[2] }}</h2>
+        <p>{{ item[3] }}</p>
+        <h5>Category: {{ item[-2] }}</h5>
+        <h5>Price: ${{ item[5] }}</h5>
+        <h5>Rental Price: {{ item[6] if item[6] else 'N/A' }}</h5>
+        <h5>Posted by: {{ item[-1] }}</h5>
+        <h5>Posted Date : {{ item[10] }}</h5>
+        <a href="{{ url_for('compose.compose_page', receiver_id=item[1], listing_id=item[0]) }}" class="btn btn-primary">Message Seller</a>
+        <!-- Debugging output removed -->
+        <!-- <pre>{{ item | tojson }}</pre>-->
     </div>
 
     <footer class="text-center py-4" id="footer">
-	<div class="container footer">
-	    <div class="row row-cols-1 row-cols-lg-3">
-		<div class="col-lg-4">
-		    <p class="text-muted my-2">Copyright&nbsp;© 2024 From Here to There</p>
-		</div>
-		<div class="col">
-		    <ul class="list-inline my-2">
-			<li class="list-inline-item me-4">
-			    <a href="Index.html"> 
-			    <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
-			</a>
-			</li>
-		    </ul>
-		</div>
-		<div class="col">
-		    <ul class="list-inline my-2">
-			<li class="list-inline-item"><a class="link-secondary" href="#">Privacy Policy</a></li>
-			<li class="list-inline-item"><a class="link-secondary" href="#">Terms of Service</a></li>
-		    </ul>
-		</div>
-	    </div>
-	</div>
+        <div class="container footer">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col-lg-4">
+                    <p class="text-muted my-2">Copyright&nbsp;© 2024 From Here to There</p>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item me-4">
+                            <a href="Index.html"> 
+                            <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a class="link-secondary" href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a class="link-secondary" href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
-
 </body>
-
 </html>

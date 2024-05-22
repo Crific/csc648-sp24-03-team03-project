@@ -10,9 +10,7 @@ def recent_items_post():
         cur = mydb.cursor(dictionary=True)
         query = """
             SELECT 
-                Listing.ItemName, 
-                Listing.PhotoName AS file_name, 
-                Listing.PostDate, 
+                Listing.*, 
                 Category.CategoryName 
             FROM 
                 Listing 
@@ -21,7 +19,7 @@ def recent_items_post():
             ON 
                 Listing.CategoryID = Category.CategoryID 
             ORDER BY 
-                Listing.PostDate DESC 
+                ListingID DESC 
             LIMIT 4
         """
         cur.execute(query)

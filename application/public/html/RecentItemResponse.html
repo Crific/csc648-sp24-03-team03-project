@@ -3,7 +3,7 @@
 {% for item in items %}
 <div class="recent-area2">
     <p>{{ item.ItemName }}</p>
-    <div class="item" onclick="window.location.href='{{ url_for('itemdetail_page', listing_id=item.ListingID) }}'">
+    <div class="item" onclick="window.location.href='{{ url_for('item_details', listing_id=item.ListingID) }}'">
     <img src="{{ url_for('static', filename='Product_Images/Thumbnails/' + item.PhotoName) }}" class="recents" alt="{{ item.ItemName }}"/>
     <p class="description">{{ item.PostDate }}</p>
     <p class="description">{{ item.CategoryName }}</p>
