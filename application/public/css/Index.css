@@ -324,7 +324,7 @@ footer.text-center.py-4 {
 }
 
 @media (max-width: 768px) {
-    #logo{
+    .logo{
 	display: none;
     }
     /* Hide the original navbar */
