@@ -20,18 +20,22 @@ body, h1, p, ul {
   font-size: 20px;
   padding: 15px;
 }
+
 .card-header {
-  display: flex;
+  text-align: center;
   align-items: center; /* This ensures vertical centering */
   justify-content: space-between; /* This will push the logo to the left and text to the center */
   margin-top: -10px;
   border: 2px solid var(--bs-emphasis-color);
   border-bottom: none;
-  font-size: 40px;
-  font-weight: bold;
   background: linear-gradient(to right, #fef5da 15%, #584bad 70%);
   padding-left: 10px;
   padding-right: 10px;
+  height: 150px;
+} 
+
+.card-header img {
+  float: left;
 }
 
 .logo {
