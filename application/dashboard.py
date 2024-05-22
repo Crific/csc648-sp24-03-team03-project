@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, url_for
+from flask import Blueprint, render_template, jsonify, request, url_for
 from flask_login import login_required, current_user
 from db_connection import get_db_connection
 import logging
@@ -48,6 +48,29 @@ def user_listings():
         logging.debug('Database connection closed.')
         
         return jsonify({'listings': listings})
+    except Exception as e:
+        logging.error("Error occurred:", exc_info=True)
+        return jsonify({'error': str(e)}), 500
+
+@dashboard_bp.route('/delete_message', methods=['POST'])
+@login_required
+def delete_message():
+    try:
+        message_id = request.form['id']
+        mydb = get_db_connection()
+        cur = mydb.cursor()
+        logging.debug('Database connection established.')
+
+        query = "DELETE FROM Message WHERE MessageID = %s AND ReceiverUserID = %s"
+        logging.debug('Executing query: %s', query)
+        cur.execute(query, (message_id, current_user.UserID))
+        mydb.commit()
+
+        cur.close()
+        mydb.close()
+        logging.debug('Message deleted and database connection closed.')
+
+        return jsonify({'success': True})
     except Exception as e:
         logging.error("Error occurred:", exc_info=True)
         return jsonify({'error': str(e)}), 500

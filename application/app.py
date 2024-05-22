@@ -223,6 +223,7 @@ def fetch_messages():
     try:
         cursor.execute("""
             SELECT 
+                m.MessageID,
                 m.MessageTitle, 
                 m.MessageText, 
                 m.MessageDateTime, 

@@ -215,7 +215,7 @@ body, h1, p, ul {
 
 #display-range p {
     width: 100%;
-    transform: translateY(-70px);
+    /*transform: translateY(-70px);*/
 }
 
 .filters {

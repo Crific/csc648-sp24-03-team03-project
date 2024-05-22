@@ -13,6 +13,8 @@
     <script src="../public/js/Dashboard.js"></script>
     <script>
         $(document).ready(function () {
+            var csrfToken = $('#csrf_token').val();
+
             function fetchMessages() {
                 $.ajax({
                     url: '/fetch_messages',
@@ -24,11 +26,11 @@
                         if (data.length > 0) {
                             $.each(data, function (key, message) {
                                 messageTable += '<tr>' +
-                                    '<td>' + message[3] + '</td>' + // UserName
-                                    '<td>' + message[0] + '</td>' + // MessageTitle
-                                    '<td>' + message[1] + '</td>' + // MessageText
-                                    '<td>' + new Date(message[2]).toLocaleString() + '</td>' + // MessageDateTime
-                                    '<td><button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button></td>' +
+                                    '<td>' + message[4] + '</td>' + // UserName
+                                    '<td>' + message[1] + '</td>' + // MessageTitle
+                                    '<td>' + message[2] + '</td>' + // MessageText
+                                    '<td>' + new Date(message[3]).toLocaleString() + '</td>' + // MessageDateTime
+                                    '<td><button class="btn btn-danger btn-delete" data-id="' + message[0] + '"><i class="fa fa-trash"></i></button></td>' +
                                     '</tr>';
                             });
                             $('#messagesContent tbody').html(messageTable);
@@ -40,10 +42,34 @@
                         }
                         $('#messagesContent').show();
                         $('#listingsContent').hide();
+
+                        // Attach click event to delete buttons
+                        $('.btn-delete').click(function() {
+                            var messageId = $(this).data('id');
+                            deleteMessage(messageId);
+                        });
                     },
                     error: function (xhr, status, error) {
                         console.log("Error: " + error);
                         alert('Error retrieving messages.');
+                    }
+                });
+            }
+
+            function deleteMessage(messageId) {
+                $.ajax({
+                    url: '/delete_message',
+                    type: 'POST',
+                    data: { 
+                        id: messageId,
+                        csrf_token: csrfToken
+                    },
+                    success: function (response) {
+                        fetchMessages();
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error: " + error);
+                        alert('Error deleting message.');
                     }
                 });
             }
@@ -59,6 +85,7 @@
 
 <body>
     <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
+    <input type="hidden" id="csrf_token" value="{{ csrf_token() }}">
     <div class="card-header">
         <a href="Index.html">
             <img src="../../public/images/From Here to There logo.jpg" class="logo" />
@@ -91,7 +118,6 @@
             Messages <span id="messageCount" class="badge" style="display: none;">0</span>
         </button>
         <button id="toListings" class="btn btn-outline-secondary">Listings</button>
-       <!-- <a href="Compose.html" class="btn btn-outline-secondary btn-compose" style="display: none;">Compose</a>-->
     </div>
 
     <div id="messagesContent" style="display:none;">
@@ -121,5 +147,4 @@
         </div>
     </div>
 </body>
-
 </html>
