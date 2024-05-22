@@ -17,6 +17,7 @@ def user_listings():
         
         query = """
             SELECT 
+                Listing.ListingID,  -- Include ListingID here
                 Listing.ItemName, 
                 Listing.PhotoName AS file_name, 
                 Listing.Price,
@@ -69,6 +70,40 @@ def delete_message():
         cur.close()
         mydb.close()
         logging.debug('Message deleted and database connection closed.')
+
+        return jsonify({'success': True})
+    except Exception as e:
+        logging.error("Error occurred:", exc_info=True)
+        return jsonify({'error': str(e)}), 500
+
+@dashboard_bp.route('/delete_listing', methods=['POST'])
+@login_required
+def delete_listing():
+    try:
+        listing_id = request.form['id']
+        logging.debug('Received listing_id: %s', listing_id)
+        if not listing_id:
+            raise ValueError("Invalid listing ID")
+
+        mydb = get_db_connection()
+        cur = mydb.cursor()
+        logging.debug('Database connection established.')
+
+        # Delete messages associated with the listing
+        query_delete_messages = "DELETE FROM Message WHERE ListingID = %s"
+        logging.debug('Executing query to delete messages: %s', query_delete_messages)
+        cur.execute(query_delete_messages, (listing_id,))
+
+        # Delete the listing
+        query_delete_listing = "DELETE FROM Listing WHERE ListingID = %s AND UserID = %s"
+        logging.debug('Executing query to delete listing: %s', query_delete_listing)
+        cur.execute(query_delete_listing, (listing_id, current_user.UserID))
+        
+        mydb.commit()
+
+        cur.close()
+        mydb.close()
+        logging.debug('Listing and associated messages deleted, database connection closed.')
 
         return jsonify({'success': True})
     except Exception as e:

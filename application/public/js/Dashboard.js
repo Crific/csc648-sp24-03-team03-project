@@ -2,13 +2,11 @@ $(document).ready(function() {
     function toggleMessages() {
         var messages = document.getElementById("messagesContent");
         var listings = document.getElementById("listingsContent");
-       // var composeBtn = document.querySelector('.btn-compose');
         var btnMessages = document.querySelector('.btn-outline-primary');
         var btnListings = document.querySelector('.btn-outline-secondary');
 
         messages.style.display = "block";
         listings.style.display = "none";
-        //composeBtn.style.display = "block";
         btnMessages.classList.add('btn-active');
         btnListings.classList.remove('btn-active');
     }
@@ -16,13 +14,11 @@ $(document).ready(function() {
     function toggleListings() {
         var messages = document.getElementById("messagesContent");
         var listings = document.getElementById("listingsContent");
-        //var composeBtn = document.querySelector('.btn-compose');
         var btnMessages = document.querySelector('.btn-outline-primary');
         var btnListings = document.querySelector('.btn-outline-secondary');
 
         listings.style.display = "block";
         messages.style.display = "none";
-        //composeBtn.style.display = "none";
         btnListings.classList.add('btn-active');
         btnMessages.classList.remove('btn-active');
 
@@ -46,15 +42,19 @@ $(document).ready(function() {
                                     <p class="description">Price: ${listing.Price}</p>
                                     <p class="description">Rental Price: ${listing.RentalPrice}</p>
                                     <p class="description">Category: ${listing.CategoryName}</p>
-                                    <button class="trash-button"><i class="fa fa-trash"></i></button>
+                                    <button class="trash-button btn-delete-listing" data-id="${listing.ListingID}"><i class="fa fa-trash"></i></button>
                                 </div>
                             `;
                             listingsContent.append(listingHtml);
                         });
                     }
 
-                    $('#userlistings-container').show();
-                    $('#messagesContent').hide();
+                    // Attach click event to delete buttons for listings
+                    $('.btn-delete-listing').click(function() {
+                        var listingId = $(this).data('id');
+                        console.log("Deleting listing with ID:", listingId); // Log the listing ID
+                        deleteListing(listingId);
+                    });
                 } else {
                     console.error('Error fetching listings:', response.error);
                 }
@@ -65,10 +65,28 @@ $(document).ready(function() {
         });
     }
 
-    if (window.location.hash === "#messages") {
-        toggleMessages();
-    } else {
-        toggleMessages();
+    function deleteListing(listingId) {
+        var csrfToken = $('#csrf_token').val();
+        console.log("Sending delete request for listing ID:", listingId); // Log the listing ID
+        $.ajax({
+            url: '/delete_listing',
+            type: 'POST',
+            data: { 
+                id: listingId,
+                csrf_token: csrfToken
+            },
+            success: function (response) {
+                if (response.success) {
+                    toggleListings();  // Refresh the listings after deletion
+                } else {
+                    alert('Error deleting listing.');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error: " + error);
+                alert('Error deleting listing.');
+            }
+        });
     }
 
     $('#toMessages').click(function() {
@@ -79,17 +97,10 @@ $(document).ready(function() {
         toggleListings();
     });
 
-    function updateMessageBadge() {
-        const badge = document.getElementById('messageCount');
-        const count = 1; 
-        
-        if (count > 0) {
-            badge.textContent = count;
-            badge.style.display = 'inline-block';
-        } else {
-            badge.style.display = 'none';
-        }
+    // Initial display
+    if (window.location.hash === "#messages") {
+        toggleMessages();
+    } else {
+        toggleListings();
     }
-
-    updateMessageBadge();
 });
