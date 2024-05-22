@@ -44,8 +44,12 @@
         </div>
         <a href="Dashboard.html" class="btn btn-nav" type="button">
             Dashboard </a>
-        <a href="Login.html" class="btn btn-nav btn-Login" type="button">
-            Login/Signup </a>
+        <!-- Check if the user is logged in and display the appropriate link -->
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
+        {% else %}
+            <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
+        {% endif %}
     </div>
     <section class="position-relative py-4 py-xl-5">
         <div class="container">

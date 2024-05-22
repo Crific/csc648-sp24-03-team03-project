@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Reset some default styles */
+body, h1, p, ul {
+    margin: 0;
+    padding: 0;
+    font-family: CustomFont;
+}
+
 /* Styles for the notice */
 .demo-notice {
   color: var(--bs-emphasis-color);
@@ -34,6 +46,73 @@
   color: black;
 }
 
+/*Search Bar */
+#searchForm {
+  border-left: 2px solid var(--bs-emphasis-color);
+  border-right: 2px solid var(--bs-emphasis-color);
+  background: linear-gradient(to right, #fef5da 15%, #584bad 70%);
+  padding: 20px;
+
+}
+
+#category,
+#searchText,
+.searchButton {
+    height: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    border-radius: 15px; /* Rounded corners */
+    border: 0;
+}
+
+/* Adjustments to input elements */
+#category {
+    width: calc(15% - 1px); /* Adjust width to leave space for the separator line */
+    padding: 0 10px; /* Add some padding for better appearance */
+    border-top-right-radius: 0; /* Remove top-right border radius to connect to searchText */
+    border-bottom-right-radius: 0; /* Remove bottom-right border radius to connect to searchText */
+    border-right: 2px solid #584bad; /* Set border color */
+}
+
+#searchText {
+    width: calc(50% - 1px); /* Adjust width to leave space for the separator line */
+    padding: 0 10px; /* Add some padding for better appearance */
+    border-top-left-radius: 0; /* Remove top-left border radius to connect to category */
+    border-bottom-left-radius: 0; /* Remove bottom-left border radius to connect to category */    
+    border-top-right-radius: 15px; /* Remove top-right border radius to connect to searchText */
+    border-bottom-right-radius: 15px; /* Remove bottom-right border radius to connect to searchText */
+    margin-top: 0px;
+}
+
+.searchButton {
+    margin-left: 10px;
+    width: 10%;
+    border: none; /* Remove border */
+    background-color:#fff; /* Match background color to maintain appearance */
+    padding: 0; /* Reset padding */   
+    border: 2px solid #584bad; /* Set border color */
+    border-radius: 15px; /* Rounded corners */
+    margin-top: 0px;
+    
+}
+
+.searchButton:active {
+    background-color: #453a8e;
+    color: white;
+}
+
+#txt-container {
+  display: flex;
+  padding-top: 0px;
+  margin-top: -30px;
+  height: 34px;
+  margin-left: 400px;
+  border-radius: 15px; /* Rounded corners */
+  border-left: 2px solid #584bad; /* Set border color */
+  border-top: 2px solid #584bad; /* Set border color */
+  border-bottom: 2px solid #584bad; /* Set border color */
+}
+
 /* Navigation Tabs */
 .nav-container {
   border: 2px solid var(--bs-emphasis-color);
@@ -60,6 +139,17 @@
 /* This class is for the last button to separate it from the others */
 .btn-Login {
   margin-left: auto; /* This will push the login button to the right if the nav-container is flex */
+}
+
+/* About dropdown menu*/
+.dropdown-item:hover{
+  background-color: #6a5acd;
+  font-weight: bold;
+  color: white;
+}
+
+.dropdown-toggle:hover {
+background-color: #6a5acd;
 }
 
 /* Main Content Area Styling */
@@ -165,9 +255,6 @@
   font-weight: bold;
   margin: 10px; /* Uniform margin for spacing */
   padding: 10px; /* Padding inside each listing */
-  display: flex; /* Makes the inside of each listing a flex container */
-  flex-direction: column; /* Stacks child elements vertically */
-  align-items: center; /* Center-aligns children horizontally */
   text-align: center; /* Centers text */
 }
 
@@ -189,6 +276,9 @@
 
 .recent-area img {
   padding: 5px;
+    float: left;
+    max-height: none;
+    padding-bottom: 16%;
 }
 
 .recent-area p.description {
@@ -224,4 +314,302 @@
 .btn-active {
   text-decoration: underline;
   background-color: #6a5acd; /* Light background color for visibility */
+}
+
+
+footer.text-center.py-4 {
+    float: inline-end;
+	width: 100%;
+  margin-top: 10px;
+}
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .logo{
+	display: none;
+    }
+    /* Hide the original navbar */
+    .nav-container, .navbar, #logo, #searchForm {
+        display: none;
+    }
+
+    .recent-items {
+        float: none;
+        margin: 10px 0 10px 0;
+        width: 100%;
+    }
+
+    #display-range {
+	width: 100%;
+    }
+
+    .mobile {
+	display: block;
+        height: 55px;
+        background: grey;
+    }
+    
+    #searchForm2 {
+        display: block;
+	float: left;
+        width: auto;
+        padding: 10px 5% 10px 5%;
+        /* Gradient background */
+        background: grey;
+	height: 35px;
+    }
+
+/* Style the navbar */
+    #navblock {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 60px;
+    }
+
+    /* Style the navbar links */
+    #navblock li {
+        text-align: center;
+        padding: 10px 0 10px 10px;
+    }
+
+    #navblock li a {
+        text-decoration: none;
+        color: #6a5acd; /* Purplish blue */
+        display: block;
+    }
+
+    /* Submenu styles */
+    #navblock .dropdown-content {
+        display: none;
+        position: relative;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    #navblock .dropdown-content a {
+        padding: 12px 12px;
+        text-decoration: none;
+        display: block;
+    }
+
+    #navblock .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .main-content {
+	padding-top: 10px;
+    }
+
+    .filters {
+	width: 100%;
+        height: 200px;
+        padding: 15px;
+    }
+
+    #category,
+    #searchText,
+    .searchButton {
+	width: auto;
+    }
+
+    /* Show the dropdown button */
+    #dropdownBtn {
+        display: block;
+        float: right;
+	width: 20%;
+	height: 55px;
+        background-color: #FFC436; /* Yellow */
+	font-size: 32px;
+	border: none;
+    }
+
+    #dropdownBtn:active {
+        background-color: #bf8e1c;
+        color: white;
+    }
+
+    /* Adjust the dropdown content width */
+    #dropdownContent {
+	float: right;
+        position: relative;
+        display: none;
+        background-color: #FFC436; /* Yellow */
+        left: 0;
+    }
+    #dropdownContent.show {
+	display: inline-block;
+	width: 20%;
+	transform: translate3d(100%, 4.5%, 0);
+    }
+
+    .dropdown-content a:hover {
+        border-radius: 0;
+    }
+
+    ul {
+	list-style: none;
+    }
+
+    ul#navblock li a {
+	font-size: 22px;
+    }
+	
+    recent-area, .recent-area2 {
+        width: 90%;
+    }
+}
+
+@media (max-width: 635px) {
+    /* Style the navbar */
+    #navblock {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 60px;
+    }
+
+    /* Style the navbar links */
+    #navblock li {
+        text-align: center;
+        padding: 10px 0 10px 10px;
+    }
+
+    #navblock li a {
+        text-decoration: none;
+        color: #6a5acd; /* Purplish blue */
+        display: block;
+    }
+
+    /* Submenu styles */
+    #navblock .dropdown-content {
+        display: none;
+        position: relative;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    #navblock .dropdown-content a {
+        padding: 12px 12px;
+        text-decoration: none;
+        display: block;
+    }
+
+    #navblock .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .mobile {
+        height: 55px;
+        background: grey;
+    }
+    
+    #searchForm2 {
+        display: block;
+	float: left;
+        width: auto;
+        padding: 10px 5% 40px 5%;
+        /* Gradient background */
+        background: grey;
+	height: 35px;
+    }
+    
+    .main-content {
+	padding-top: 10px;
+    }
+
+    #category,
+    #searchText,
+    .searchButton {
+	width: auto;
+    }
+
+    /* Show the dropdown button */
+    #dropdownBtn {
+        display: block;
+        float: right;
+	width: 10%;
+	height: 55px;
+        background-color: #FFC436; /* Yellow */
+	font-size: 32px;
+	border: none;
+    }
+
+    #dropdownBtn:active {
+	background-color: #bf8e1c;
+        color: white;
+    }
+
+    /* Adjust the dropdown content width */
+    #dropdownContent {
+	float: right;
+        position: relative;
+        display: none;
+        background-color: #FFC436; /* Yellow */
+        left: 0;
+    }
+    #dropdownContent #navblock {
+	text-decoration: none;
+    }
+    .dropdown-content{
+        background-color: #FFC436; /* Yellow */
+	left: 0;
+    }
+    #dropdownContent.show {
+	display: inline-block;
+	width: 25%;
+	transform: translate3d(40%, 1.5%, 0);
+    }
+    ul {
+	list-style: none;
+        text-align: center;
+    }
+    #loginButton {
+	text-align: center;
+    }
+}
+@media (max-width: 560px) {
+    .main-content {
+        margin-top: 60px;
+	padding: 0;
+    }
+    .recent-items {
+	width: 80%;
+	display: grid;
+        align-items: center;
+	text-align: center;
+    }
+    select#category {
+	width: 20%;
+    }
+    .searchButton {
+        width: 15%;
+        margin-left: 0;
+    }
+    #dropdownBtn {
+	width: 100%;
+    }
+    #dropdownContent {
+	width: 100%;
+        position: relative;
+        display: none;
+        background-color: #FFC436; /* Yellow */
+        left: 0;
+    }
+    #dropdownContent.show {
+	display: inline-block;
+	transform: translate(0,0);
+	width: 100%;
+    }
+    #navblock {
+	width: 100%;
+    }
+    #navblock li {
+        width: 100%;
+    }
 }

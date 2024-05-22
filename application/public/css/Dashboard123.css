@@ -1,0 +1,227 @@
+/* Styles for the notice */
+.demo-notice {
+  color: var(--bs-emphasis-color);
+  border: 2px solid var(--bs-emphasis-color);
+  background: #ffd700;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px;
+}
+.card-header {
+  display: flex;
+  align-items: center; /* This ensures vertical centering */
+  justify-content: space-between; /* This will push the logo to the left and text to the center */
+  margin-top: -10px;
+  border: 2px solid var(--bs-emphasis-color);
+  border-bottom: none;
+  font-size: 40px;
+  font-weight: bold;
+  background: linear-gradient(to right, #fef5da 15%, #584bad 70%);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.logo {
+  width: 100px; /* Keep your logo dimensions */
+  
+}
+
+.title-text {
+  /* This will center the title text in the available space, assuming .title-text wraps the text */
+  flex: 1;
+  text-align: center;
+  color: black;
+}
+
+/* Navigation Tabs */
+.nav-container {
+  border: 2px solid var(--bs-emphasis-color);
+  padding: 8px;
+  background: #FFC436;
+}
+
+.btn-nav {
+  font-weight: bold;
+  color: black;
+  border: 2px solid black;
+  margin-left: 10px;
+}
+
+.btn-nav:hover {
+  background-color: #6a5acd;
+  color: white; /* Optional: change text color on hover */
+}
+
+.btn-nav:first-child {
+  margin-left: 0;
+}
+
+/* This class is for the last button to separate it from the others */
+.btn-Login {
+  margin-left: auto; /* This will push the login button to the right if the nav-container is flex */
+}
+
+/* Main Content Area Styling */
+.main-content {
+  border: 2px solid var(--bs-emphasis-color);
+  border-radius: 10px;
+  padding: 70px;
+  background: #ffd700;
+  width: 1100px;
+  height: 10px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.head-title {
+  font-weight: bold;
+  font-size: 35px;
+  color: var(--bs-emphasis-color);
+  margin-left: -50px;
+  margin-top: -90px;
+}
+
+.user-greeting {
+  font-size: 18px;
+  color: black;  
+  text-align: center;
+}
+
+.btn-outline-primary, .btn-outline-secondary {
+  position: relative; /* Essential for positioning the badge absolutely */
+  border: 2px solid var(--bs-emphasis-color);
+  color: var(--bs-emphasis-color);
+  font-weight: bold;
+  margin-left: -50px;
+  margin-bottom: -40px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+ 
+/* Message Notification*/
+.btn .badge {
+  position: absolute; /* Absolute positioning relative to the nearest positioned ancestor (the button) */
+  padding: 3px 6px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  right: 0px;
+  top: 0px;
+  transform: translate(50%, -50%); /* Centers badge on the top right corner */
+}
+
+.btn-outline-primary {
+  margin-right: 10px; /* Add space to the right of the Dashboard button */
+}
+
+/* or for the Compose button */
+.btn-outline-secondary {
+  margin-left: 10px; /* Add space to the left of the Compose button */
+}
+
+.btn-outline-primary:hover, .btn-outline-secondary:hover {
+  background-color: #6a5acd;
+}
+
+/* Messages.css */
+.search-table-col {
+  width: 900px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+
+.table-hover thead th {
+  font-size: 15px;
+  text-align: center;
+  border: 2px solid #6a5acd;
+}
+
+.table-hover tbody td {
+  text-align: center;
+  font-size: 14px;
+  border: 2px solid #6a5acd;
+}
+
+/*Listings.css*/
+#display-range {
+  display: flex;
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically */
+  flex-wrap: wrap; /* Allows items to wrap as needed */
+  gap: 20px; /* Adds space between items */
+  margin: 30px auto; /* Centers the container and adds vertical space */
+  padding: 0 50px; /* Horizontal padding for better spacing on smaller screens */
+}
+
+/* Individual listing areas */
+.recent-area {
+  flex: 0 1 300px; /* Flex-grow: 0, Flex-shrink: 1, Flex-basis: 300px */
+  border-radius: 10px;
+  border: 2px solid #6a5acd;
+  font-size: 20px; /* Adjusted for consistency */
+  font-weight: bold;
+  margin: 10px; /* Uniform margin for spacing */
+  padding: 10px; /* Padding inside each listing */
+  display: flex; /* Makes the inside of each listing a flex container */
+  flex-direction: column; /* Stacks child elements vertically */
+  align-items: center; /* Center-aligns children horizontally */
+  text-align: center; /* Centers text */
+}
+
+/* Styling for the image within the listing */
+.recents {
+  max-width: 120px;
+  max-height: 120px;
+  width: 100%; /* Ensures the image is responsive */
+  height: auto; /* Maintains aspect ratio */
+  margin-bottom: 10px; /* Space below the image */
+}
+
+/* Paragraph styles within listings */
+.recent-area p {
+  border-bottom: 2px solid #6a5acd; /* Separates the paragraphs visually */
+  padding-bottom: 5px; /* Space below text */
+  width: 100%; /* Ensures it occupies full width of the parent */
+}
+
+.recent-area img {
+  padding: 5px;
+}
+
+.recent-area p.description {
+  font-size: 18px;
+  border: 0;
+}
+
+/*Compose Button*/
+.btn-compose{
+  float: right; /* Aligns the button to the right */
+  margin-right: -50px; /* Adds some spacing from the right edge */
+  margin-top: 14px;
+  font-size: 16px;
+}
+
+.btn-compose {
+  margin-top: 10px;  
+  padding: 8px 16px; 
+}
+
+/* Optional: Smooth visibility transition */
+.btn-compose {
+  transition: opacity 0.3s ease;
+}
+
+/* This class is to be toggled by JavaScript if using transitions */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/*Active Button*/ 
+.btn-active {
+  text-decoration: underline;
+  background-color: #6a5acd; /* Light background color for visibility */
+}
