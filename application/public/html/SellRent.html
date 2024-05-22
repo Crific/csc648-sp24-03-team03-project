@@ -99,8 +99,8 @@
                                 </div>
                                 <input class="form-control" type="file" name="itemPic">
                                 <div class="mb-3">
-                                    <button href="Index.html" class="btn btn-primary btn-one" type="button">Cancel</button>
-                                    <button class="btn btn-primary btn-two" type="submit">Post</button>
+                                    <button onclick="window.location.href='{{ url_for('index') }}'" href="Index.html" class="btn btn-primary btn-one" type="button">Cancel</button>
+                                    <button onclick="window.location.href='{{ url_for('dashboard_page') }}'"class="btn btn-primary btn-two" type="submit">Post</button>
                                 </div>
                             </form>
                             <p class="text-muted">May Take 24h For Approval</p>

@@ -69,7 +69,6 @@ app.register_blueprint(dashboard_bp, url_prefix="")
 
 # Define routes
 @app.route('/Index.html')
-@app.route('/')
 def index():
     return render_template('Index.html')
 

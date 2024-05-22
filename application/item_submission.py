@@ -32,6 +32,9 @@ def submit_item():
     item_desc = request.form.get('itemDesc', '')
     item_pic = request.files['itemPic']
 
+    if item_rental_price == '':
+        item_rental_price = None
+
     # Log received form data
     logging.debug(f"Received form data: item_name={item_name}, item_price={item_price}, category_id={category_id}, item_desc={item_desc}")
 
