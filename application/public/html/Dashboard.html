@@ -84,27 +84,28 @@
 </head>
 
 <body>
-    <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
     <input type="hidden" id="csrf_token" value="{{ csrf_token() }}">
-    <header class="card-header">
-        <a href="Index.html">
-            <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
-        </a>
-        <p id="welcome">Welcome SFSU students, faculty, and staff to</p>
-        <h1 class="title-text">From Here To There</h1>
-        <form id="searchForm">
+<div class="header-container">
+        <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
+        <div class="card-header">
+            <a href="Index.html">
+                <img src="../../public/images/From Here to There logo.jpg" class="logo"/>
+            </a>
+            <h1 class="title-text">From Here To There</h1>
+        </div>
+        <form id="searchForm" style="text-align: center;">
             <div id="txt-container">
-                <select id="category">
-                    <option value="default">Select Category</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="books">Books</option>
-                    <option value="furniture">Furniture</option>
-                </select>
-                <input type="text" id="searchText" name="searchText">
-                <input type="submit" class="searchButton" value="Search">
-            </div>
+            <select id="category">
+                <option value="default">Select Category</option>
+                <option value="electronics">Electronics</option>
+                <option value="books">Books</option>
+                <option value="furniture">Furniture</option>
+            </select>
+            <input type="text" id="searchText" name="searchText">
+            <input type="submit" class="searchButton" value="Search">
         </form>
-    </header>
+    </div>
+</div>
     <div class="nav-container" style="display: flex;">
         <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown"
             aria-expanded="false">
