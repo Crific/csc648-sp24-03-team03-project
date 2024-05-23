@@ -15,17 +15,20 @@ src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
 }
 
 .card-header {
-  display: flex;
+  text-align: center;
   align-items: center; /* This ensures vertical centering */
   justify-content: space-between; /* This will push the logo to the left and text to the center */
   margin-top: -10px;
   border: 2px solid var(--bs-emphasis-color);
   border-bottom: none;
-  font-size: 40px;
-  font-weight: bold;
   background: linear-gradient(to right, #fef5da 15%, #584bad 70%);
   padding-left: 10px;
   padding-right: 10px;
+  height: 140px;
+} 
+
+.card-header img {
+  float: left;
 }
 
 .logo {
@@ -37,15 +40,14 @@ src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
   flex: 1;
   text-align: center;
   color: black;
+  margin-top: 10px;
 }
 
 /*Search Bar */
 #searchForm {
-  border-left: 2px solid var(--bs-emphasis-color);
   border-right: 2px solid var(--bs-emphasis-color);
   background: linear-gradient(to right, #fef5da 15%, #584bad 70%);
-  padding: 20px;
-
+  padding: 30px;
 }
 
 #category,
@@ -106,52 +108,43 @@ src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
   border-bottom: 2px solid #584bad; /* Set border color */
 }
 
-  /* Navigation Tabs */
-  .nav-container {
-    border: 2px solid var(--bs-emphasis-color);
-    padding: 8px;
-    background: #FFC436;
-  }
-  
-  .btn-nav {
-    font-weight: bold;
-    color: black;
-    border: 2px solid black;
-    margin-left: 10px;
-  }
-  
-  .btn-nav:hover {
-    background-color: #6a5acd;
-    color: white; /* Optional: change text color on hover */
-  }
-  
-  .btn-nav:first-child {
-    margin-left: 0;
-  }
-  
-  /* This class is for the last button to separate it from the others */
-  .btn-Login {
-    margin-left: auto; /* This will push the login button to the right if the nav-container is flex */
-  }
+/* Navigation Tabs */
+.nav-container {
+  border: 2px solid var(--bs-emphasis-color);
+  padding: 8px;
+  background: #FFC436;
+}
 
-  .btn-about{
-    background-color: #ffd700;
-  }
+.btn-nav {
+  font-weight: bold;
+  color: black;
+  border: 2px solid black;
+  margin-left: 10px;
+}
 
-  /* About dropdown menu*/
-  #aboutDropdown .dropdown-item:hover{
+.btn-nav:hover {
+  background-color: #6a5acd;
+  color: white; /* Optional: change text color on hover */
+}
+
+.btn-nav:first-child {
+  margin-left: 0;
+}
+  
+/* This class is for the last button to separate it from the others */
+.btn-Login {
+  margin-left: auto; /* This will push the login button to the right if the nav-container is flex */
+}
+
+/* About dropdown menu*/
+.dropdown-item:hover{
   background-color: #6a5acd;
   font-weight: bold;
-  color: #FFC436;
+  color: white;
 }
 
-  #aboutDropdown .dropdown-toggle:hover {
+.dropdown-toggle:hover {
   background-color: #6a5acd;
-}
-
-.dropdown-toggle.btn-nav {
-    border: 2px solid var(--bs-emphasis-color);
-    background: #FFC436;
 }
       
   .alert {
@@ -329,4 +322,295 @@ border-color: #6a5acd;
 .form-title-container{
   margin-bottom: -10px;
   padding-top: 5px;
+}
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .logo{
+	display: none;
+    }
+    /* Hide the original navbar */
+    .nav-container, .navbar, #logo, #searchForm {
+        display: none;
+    }
+
+    .recent-items {
+        float: none;
+        margin: 10px 0 10px 0;
+        width: 100%;
+    }
+
+    #display-range {
+	width: 100%;
+    }
+
+    .mobile {
+	display: block;
+        height: 55px;
+        background: grey;
+    }
+    
+    #searchForm2 {
+        display: block;
+	float: left;
+        width: auto;
+        padding: 10px 5% 10px 5%;
+        /* Gradient background */
+        background: grey;
+	height: 35px;
+    }
+
+/* Style the navbar */
+    #navblock {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 60px;
+    }
+
+    /* Style the navbar links */
+    #navblock li {
+        text-align: center;
+        padding: 10px 0 10px 10px;
+    }
+
+    #navblock li a {
+        text-decoration: none;
+        color: #6a5acd; /* Purplish blue */
+        display: block;
+    }
+
+    /* Submenu styles */
+    #navblock .dropdown-content {
+        display: none;
+        position: relative;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    #navblock .dropdown-content a {
+        padding: 12px 12px;
+        text-decoration: none;
+        display: block;
+    }
+
+    #navblock .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .main-content {
+	padding-top: 10px;
+    }
+
+    .filters {
+	width: 100%;
+        height: 200px;
+        padding: 15px;
+    }
+
+    #category,
+    #searchText,
+    .searchButton {
+	width: auto;
+    }
+
+    /* Show the dropdown button */
+    #dropdownBtn {
+        display: block;
+        float: right;
+	width: 20%;
+	height: 55px;
+        background-color: #FFC436; /* Yellow */
+	font-size: 32px;
+	border: none;
+    }
+
+    #dropdownBtn:active {
+        background-color: #bf8e1c;
+        color: white;
+    }
+
+    /* Adjust the dropdown content width */
+    #dropdownContent {
+	float: right;
+        position: relative;
+        display: none;
+        background-color: #FFC436; /* Yellow */
+        left: 0;
+    }
+    #dropdownContent.show {
+	display: inline-block;
+	width: 20%;
+	transform: translate3d(100%, 4.5%, 0);
+    }
+
+    .dropdown-content a:hover {
+        border-radius: 0;
+    }
+
+    ul {
+	list-style: none;
+    }
+
+    ul#navblock li a {
+	font-size: 22px;
+    }
+	
+    recent-area, .recent-area2 {
+        width: 90%;
+    }
+}
+
+@media (max-width: 635px) {
+    /* Style the navbar */
+    #navblock {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 60px;
+    }
+
+    /* Style the navbar links */
+    #navblock li {
+        text-align: center;
+        padding: 10px 0 10px 10px;
+    }
+
+    #navblock li a {
+        text-decoration: none;
+        color: #6a5acd; /* Purplish blue */
+        display: block;
+    }
+
+    /* Submenu styles */
+    #navblock .dropdown-content {
+        display: none;
+        position: relative;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    #navblock .dropdown-content a {
+        padding: 12px 12px;
+        text-decoration: none;
+        display: block;
+    }
+
+    #navblock .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .mobile {
+        height: 55px;
+        background: grey;
+    }
+    
+    #searchForm2 {
+        display: block;
+	float: left;
+        width: auto;
+        padding: 10px 5% 40px 5%;
+        /* Gradient background */
+        background: grey;
+	height: 35px;
+    }
+    
+    .main-content {
+	padding-top: 10px;
+    }
+
+    #category,
+    #searchText,
+    .searchButton {
+	width: auto;
+    }
+
+    /* Show the dropdown button */
+    #dropdownBtn {
+        display: block;
+        float: right;
+	width: 10%;
+	height: 55px;
+        background-color: #FFC436; /* Yellow */
+	font-size: 32px;
+	border: none;
+    }
+
+    #dropdownBtn:active {
+	background-color: #bf8e1c;
+        color: white;
+    }
+
+    /* Adjust the dropdown content width */
+    #dropdownContent {
+	float: right;
+        position: relative;
+        display: none;
+        background-color: #FFC436; /* Yellow */
+        left: 0;
+    }
+    #dropdownContent #navblock {
+	text-decoration: none;
+    }
+    .dropdown-content{
+        background-color: #FFC436; /* Yellow */
+	left: 0;
+    }
+    #dropdownContent.show {
+	display: inline-block;
+	width: 25%;
+	transform: translate3d(40%, 1.5%, 0);
+    }
+    ul {
+	list-style: none;
+        text-align: center;
+    }
+    #loginButton {
+	text-align: center;
+    }
+}
+@media (max-width: 560px) {
+    .main-content {
+        margin-top: 60px;
+	padding: 0;
+    }
+    .recent-items {
+	width: 80%;
+	display: grid;
+        align-items: center;
+	text-align: center;
+    }
+    select#category {
+	width: 20%;
+    }
+    .searchButton {
+        width: 15%;
+        margin-left: 0;
+    }
+    #dropdownBtn {
+	width: 100%;
+    }
+    #dropdownContent {
+	width: 100%;
+        position: relative;
+        display: none;
+        background-color: #FFC436; /* Yellow */
+        left: 0;
+    }
+    #dropdownContent.show {
+	display: inline-block;
+	transform: translate(0,0);
+	width: 100%;
+    }
+    #navblock {
+	width: 100%;
+    }
+    #navblock li {
+        width: 100%;
+    }
 }

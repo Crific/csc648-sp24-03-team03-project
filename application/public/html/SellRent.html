@@ -4,10 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Sell/Rent</title>
-    <link rel="stylesheet" href="../../public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../public/css/SellRent.css">
-    <link rel="icon" type="image" href="../../images/From Here to There logo.jpg">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css/SellRent.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-23LPJ8E0MB"></script>
@@ -21,46 +23,47 @@
 </head>
 
 <body>
-    <div class="header-container">
-        <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
-        <div class="card-header">
-            <a href="Index.html">
-                <img src="../../public/images/From Here to There logo.jpg" class="logo" />
-            </a>
-            <span class="title-text">From Here To There</span>
-        </div>
-        <form id="searchForm" style="text-align: center;">
-            <div id="txt-container">
-                <select id="category">
-                    <option value="default">Select Category</option>
-                    <option value="1">Books</option>
-                    <option value="2">Electronics</option>
-                    <option value="3">Furniture</option>
-                </select>
-                <input type="text" id="searchText" name="searchText">
-                <input type="submit" class="searchButton" value="Search">
-        </form>
-    </div>
-    </div>
+    <h1 class="demo-notice">SFSU Software Engineering Project CSC 648-848, Spring 2024. For Demonstration Only.</h1>
+    <header class="card-header">
+	<a href="Index.html">
+	    <img src="../../public/images/From Here to There logo.jpg" class="logo" />
+	</a>
+	<h1 class="title-text">From Here To There</h1>
+	<form id="searchForm">
+	    <div id="txt-container">
+	        <select id="category">
+		    <option value="default">Select Category</option>
+		    <option value="electronics">Electronics</option>
+		    <option value="books">Books</option>
+		    <option value="furniture">Furniture</option>
+		</select>
+	        <input type="text" id="searchText" name="searchText">
+	        <input type="submit" class="searchButton" value="Search">
+	    </div>
+	</form>
+    </header>
     <div class="nav-container" style="display: flex;">
-        <button class="btn btn-nav dropdown-toggle" id="aboutDropdown" data-bs-toggle="dropdown"
-            aria-expanded="false">About</button>
-        <div class="dropdown-menu" aria-labelledby="aboutDropdown">
-            <a class="dropdown-item" href="about/Gurpreet.html">Gurpreet Natt</a>
-            <a class="dropdown-item" href="about/Douglas.html">Douglas Cheung</a>
-            <a class="dropdown-item" href="about/Gursimran.html">Gursimran Singh</a>
-            <a class="dropdown-item" href="about/Omar.html">Omar Dajani</a>
-            <a class="dropdown-item" href="about/Justin.html">Justin Isidro</a>
-            <a class="dropdown-item" href="about/GioJung.html">Gio Jung</a>
-        </div>
-        <a href="Dashboard.html" class="btn btn-nav" type="button">
-            Dashboard </a>
-        <!-- Check if the user is logged in and display the appropriate link -->
-        {% if current_user.is_authenticated %}
-        <a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
-        {% else %}
-        <a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
-        {% endif %}
+        <button class="btn btn-nav dropdown-toggle" type="button" id="aboutDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            About
+	</button>
+	<ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+	    <li><a class="dropdown-item" href="about/Douglas.html">Douglas</a></li>
+	    <li><a class="dropdown-item" href="about/GioJung.html">Gio Jung</a></li>
+	    <li><a class="dropdown-item" href="about/Gurpreet.html">Gurpreet</a></li>
+	    <li><a class="dropdown-item" href="about/Gursimran.html">Gursimran</a></li>
+	    <li><a class="dropdown-item" href="about/Justin.html">Justin</a></li>
+	    <li><a class="dropdown-item" href="about/Omar.html">Omar</a></li>
+	</ul>
+	<a href="SellRent.html" class="btn btn-nav" type="button">Sell/Rent</a>
+	<a href="Dashboard.html" class="btn btn-nav" type="button">Dashboard</a>
+
+	<!-- Check if the user is logged in and display the appropriate link -->
+	{% if current_user.is_authenticated %}
+	<a href="{{ url_for('logout') }}" class="btn btn-nav btn-Login" type="button">Logout</a>
+	{% else %}
+	<a href="Login.html" class="btn btn-nav btn-Login" type="button">Login/Signup</a>
+	{% endif %}
     </div>
     <section class="position-relative py-4 py-xl-5">
         <div class="container">
