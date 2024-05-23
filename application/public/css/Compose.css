@@ -67,7 +67,7 @@
 /* Main Content Area Styling */
 .main-content {
   padding: 30px; /* Consistent padding ensures that the content inside does not grow or shrink unexpectedly */
-  width: 500px; /* Fixed width for consistency */
+  width: 1000px; /* Fixed width for consistency */
   margin: auto; /* Center the form horizontally */
   margin-top: 50px; /* Adequate spacing from the top */
 }
@@ -109,6 +109,6 @@
 }
 
 
-.head-title{
+.item-details{
   float: left;
 }
