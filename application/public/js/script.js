@@ -5,7 +5,7 @@ $(document).ready(function() {
         var query = $('#searchText').val();
         var category = $('#category').val();
 
-        // Redirect to Search1.html with query parameters
+        // Redirect to Search.html with query parameters
         var searchParams = new URLSearchParams({
             query: query,
             category: category
@@ -13,6 +13,17 @@ $(document).ready(function() {
 
         window.location.href = 'Search.html?' + searchParams;
     }
+
+    // Common functionality to handle search form submission
+    $('#searchForm, #searchForm2').on('submit', function(event) {
+        event.preventDefault();
+        performSearch();
+    });
+
+    // Handle search button click event
+    $('.searchButton').click(function() {
+        performSearch();
+    });
 
     // Load initial recent items if on Index.html
     if (window.location.pathname.endsWith("Index.html")) {
@@ -26,15 +37,9 @@ $(document).ready(function() {
                 console.error('Error fetching recent items:', error);
             }
         });
-
-        // Handle search form submission on Index.html
-        $('#searchForm, #searchForm2').on('submit', function(event) {
-            event.preventDefault();
-            performSearch();
-        });
     }
 
-    // If on Search1.html, handle search and filters
+    // If on Search.html, handle search and filters
     if (window.location.pathname.endsWith("Search.html")) {
         console.log("script.js loaded on Search.html");
 
@@ -67,12 +72,6 @@ $(document).ready(function() {
 
         // Initial search results load
         fetchSearchResults();
-
-        // Handle search form submission on Search1.html
-        $('#searchForm, #searchForm2').on('submit', function(event) {
-            event.preventDefault();
-            performSearch();
-        });
 
         // Handle filter changes
         $('#price-r, #rentalprice-r').change(function() {
@@ -209,17 +208,6 @@ $(document).ready(function() {
             $('#toListings').addClass('active');
             $('#toMessages').removeClass('active');
         }
-    }
-
-    $('.searchButton').click(function() {
-        if (isIndexPage()) {
-            event.preventDefault();
-        }
-        triggerAnimations();
-    });
-
-    function isIndexPage() {
-        return window.location.pathname.endsWith("index.html");
     }
 
     function adjustFooterMarginTop(num) {

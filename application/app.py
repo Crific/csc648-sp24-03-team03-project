@@ -334,5 +334,9 @@ def item_details():
         flash(f"Error fetching item details: {e}", 'danger')
         return redirect(url_for('index'))
 
+@app.route('/TestPage.html')
+def test_page():
+    return render_template('/TestPage.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
