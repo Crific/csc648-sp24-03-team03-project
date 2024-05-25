@@ -3,6 +3,13 @@ font-family: 'CustomFont';
 src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
 } 
 
+/* Reset some default styles */
+body, h1, p, ul {
+    margin: 0;
+    padding: 0;
+    font-family: CustomFont;
+}
+
 /* General Styles for Notices and Headers */
 .demo-notice {
   color: var(--bs-emphasis-color);
@@ -24,7 +31,7 @@ src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
   background: linear-gradient(to right, #fef5da 15%, #584bad 70%);
   padding-left: 10px;
   padding-right: 10px;
-  height: 140px;
+  height: 150px;
 } 
 
 .card-header img {
@@ -35,19 +42,22 @@ src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
   width: 100px; /* Keep your logo dimensions */
 }
 
-.title-text {
-  /* This will center the title text in the available space, assuming .title-text wraps the text */
-  flex: 1;
-  text-align: center;
-  color: black;
-  margin-top: 10px;
+#searchForm {
+    flex: 1; /* Take up remaining space in the flex container */
+    display: inline-block;
+    margin-left: 15%;
+    margin-bottom: 10px;
+    width: 80%;
+    float: right;
 }
 
-/*Search Bar */
-#searchForm {
-  border-right: 2px solid var(--bs-emphasis-color);
-  background: linear-gradient(to right, #fef5da 15%, #584bad 70%);
-  padding: 30px;
+#txt-container {
+    display: flex;
+    width: 100%;
+    border-radius: 15px; /* Rounded corners */
+    border-left: 2px solid #584bad; /* Set border color */
+    border-top: 2px solid #584bad; /* Set border color */
+    border-bottom: 2px solid #584bad; /* Set border color */
 }
 
 #category,
@@ -76,19 +86,15 @@ src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
     border-bottom-left-radius: 0; /* Remove bottom-left border radius to connect to category */    
     border-top-right-radius: 15px; /* Remove top-right border radius to connect to searchText */
     border-bottom-right-radius: 15px; /* Remove bottom-right border radius to connect to searchText */
-    margin-top: 0px;
 }
 
 .searchButton {
     margin-left: 10px;
     width: 10%;
     border: none; /* Remove border */
-    background-color:#fff; /* Match background color to maintain appearance */
-    padding: 0; /* Reset padding */   
-    border: 2px solid #584bad; /* Set border color */
+    background-color: #fff; /* Match background color to maintain appearance */
+    padding: 0; /* Reset padding */    border: 2px solid #584bad; /* Set border color */
     border-radius: 15px; /* Rounded corners */
-    margin-top: 0px;
-    
 }
 
 .searchButton:active {
@@ -96,16 +102,14 @@ src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
     color: white;
 }
 
-#txt-container {
-  display: flex;
-  padding-top: 0px;
-  margin-top: -30px;
-  height: 34px;
-  margin-left: 400px;
-  border-radius: 15px; /* Rounded corners */
-  border-left: 2px solid #584bad; /* Set border color */
-  border-top: 2px solid #584bad; /* Set border color */
-  border-bottom: 2px solid #584bad; /* Set border color */
+.title-text {
+  /* This will center the title text in the available space, assuming .title-text wraps the text */
+  flex: 1;
+  text-align: center;
+  padding-top: 25px;
+  font-weight: bold;
+  font-size: 35px;
+  color: black;
 }
 
 /* Navigation Tabs */
@@ -134,6 +138,8 @@ src: url('Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
 /* This class is for the last button to separate it from the others */
 .btn-Login {
   margin-left: auto; /* This will push the login button to the right if the nav-container is flex */
+  float: right;
+  margin-right: 5px;
 }
 
 /* About dropdown menu*/
@@ -232,9 +238,7 @@ margin-bottom: 10px;
 }
 
 .dropdown-toggle {
-background-color: white;
 color: black;
-border-color: #6a5acd;
 }
 
 .dropdown-item:hover{
@@ -279,7 +283,7 @@ font-style: italic;
 margin-top: 65px;
 }
       
-input {
+input:not(.no-margin) {
 margin-top: 15px;
 margin-bottom: 15px;
 }
